@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ladderized.JS Demo</title>
+</head>
+<body>
+<h1>Welcome!</h1>
+<p>Check out the source code & browser's console window to view results.</p>
+<script src="../dist/ladderized.min.js"></script>
+<script>
+	/*
+	
+	// WATERFALL / SERIES / STEP-BY-STEP:
+	
+	Ladderized
+		.js({
+			link: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js',
+			callback: function () {
+				console.log('jquery loaded!');
+			}
+		})
+		.css({
+			link: 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css'
+		})
+		.js({
+			link: 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js'
+		})
+		.resource({
+			name: 'descartes',
+			link: 'https://upload.wikimedia.org/wikipedia/commons/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg',
+			callback: function (resource, url) {
+				var img = document.createElement('img');
+				document.body.appendChild(img);
+				img.src = url;
+			}
+		})
+		.load(function(){
+			console.log('all files loaded!');
+		});
+	*/
+	
+	// WITH PARALLEL LOADING:
+	// ERROR HANDLING
+	// AND NANOBAR
+	
+	Ladderized
+		.showNanoBar()
+		.js({
+			link: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js',
+			onLoad: function () {
+				console.log('jquery loaded!');
+			}
+		})
+		.js({
+			link: './nonexistent.js',
+			onError: function () {
+				console.log('error loading js file!');
+			}
+		})
+		.css({
+			link: './nonexistent.css',
+			onError: function () {
+				console.log('error loading css!');
+			}
+		})
+		.resource({
+			name: 'nonexistentfile',
+			link: 'https://uploadz.wikimedia.org/nonexistent.jpg',
+			onLoad: function () {
+				console.log('successfully loaded file!');
+			},
+			onError: function () {
+				console.log('error loading file!');
+			}
+		})
+		.resource({
+			name: 'descartes1',
+			link: 'https://upload.wikimedia.org/wikipedia/commons/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg?dawd2',
+			onLoad: function () {
+				console.log('successfully loaded descartes1!');
+			},
+			onError: function () {
+				console.log('error loading descartes1!');
+			}
+		})
+		.parallel({
+			js: [
+				'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js'
+			],
+			css: [
+				'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css'
+			],
+			resources: [
+				{
+					name: 'descartes2',
+					link: 'https://upload.wikimedia.org/wikipedia/commons/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg'
+				}
+			]
+		})
+		.load(function(resources){
+			var img = document.createElement('img');
+			document.body.appendChild(img);
+			img.src = resources.descartes1.objectURL;
+			var img = document.createElement('img');
+			document.body.appendChild(img);
+			img.src = resources.descartes2.objectURL;
+			console.log('resources:', resources);
+			console.log('all files loaded!');
+		});
+		
+</script>
+</body>
+</html>

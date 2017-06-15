@@ -1,0 +1,44 @@
+{
+  "name": "ladderized",
+  "version": "1.2.11",
+  "description": "A featured-packed loader w/o the need for jQuery; for loading js files & css files, etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clusteratlas/ladderized.git"
+  },
+  "keywords": [
+    "javascript",
+    "js",
+    "css",
+    "resource",
+    "image",
+    "file",
+    "binary",
+    "loader",
+    "dicks",
+    "lol"
+  ],
+  "author": "clusteratlas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/clusteratlas/ladderized/issues"
+  },
+  "homepage": "https://github.com/clusteratlas/ladderized#readme",
+  "dependencies": {
+    "nanobar": "^0.4.2",
+    "once-document-is-ready": "^3.0.0",
+    "resource-loader": "^2.0.8"
+  },
+  "devDependencies": {
+    "express": "^4.15.3",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-inject-string": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "uglify-js": "^3.0.13"
+  }
+}
