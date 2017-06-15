@@ -1,15 +1,8 @@
 var ladderized = function () {
-	var queue = [];
-	this.queue = queue;
-	
-	this.clearQueue = function () {
-		queue = [];
-		return this;
-	}
 		
 	var nanobar;
 	var nanoPulses = 0;
-	var nanoValue = 0;
+	var nanoValue = 10;
 	
 	this.showNanoBar = function () {
 		var options = {
@@ -18,8 +11,18 @@ var ladderized = function () {
 			target: document.body
 		};
 		nanobar = new Nanobar(options);
-		nanoValue += 10;
+		nanoValue = 10;
 		nanobar.go(nanoValue);
+		return this;
+	}
+	
+	var queue = [];
+	this.queue = queue;
+	
+	this.clearQueue = function () {
+		queue = [];
+		nanoPulses = 0;
+		nanoValue = 10;
 		return this;
 	}
 	

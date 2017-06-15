@@ -178,6 +178,19 @@ node index.js
   - Extra-lightweight progress bars
   - http://nanobar.jacoborus.codes/
   = https://github.com/jacoborus/nanobar
+  
+**Other Methods**
+
+```
+// Use clearQueue method for a reset; can also be chained.
+Ladderized
+	.clearQueue()
+	
+// Use the standalone loaders for manual loading.
+Ladderized.loaders.js(link[string], onLoad[function], onError[function])
+Ladderized.loaders.css(link[string], onLoad[function], onError[function])
+Ladderized.loaders.resource(name[string], link[string], onLoad[function], onError[function])
+```
 
 ## Testing
 
