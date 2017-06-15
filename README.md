@@ -1,6 +1,6 @@
 # Ladderized
 
-> A featured-packed native loader of JS & CSS files for the browser.
+> The featured-packed native loader of JS, CSS, and any type of files for mobile & desktop browsers.
 
 - Loads JS files.
 - Loads CSS files.
@@ -44,6 +44,7 @@ $ npm install ladderized@latest --save
 ```
 // At CMD or Terminal:
 
+git clone https://github.com/clusteratlas/ladderized
 cd ladderized
 npm install
 cd demo
