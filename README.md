@@ -177,7 +177,7 @@ node index.js
 - **"window.Nanobar"**
   - Extra-lightweight progress bars
   - http://nanobar.jacoborus.codes/
-  = https://github.com/jacoborus/nanobar
+  - https://github.com/jacoborus/nanobar
   
 **Other Methods**
 
