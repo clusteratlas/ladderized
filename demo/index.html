@@ -15,7 +15,7 @@
 	Ladderized
 		.js({
 			link: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js',
-			callback: function () {
+			onLoad: function () {
 				console.log('jquery loaded!');
 			}
 		})
@@ -28,7 +28,7 @@
 		.resource({
 			name: 'descartes',
 			link: 'https://upload.wikimedia.org/wikipedia/commons/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg',
-			callback: function (resource, url) {
+			onLoad: function (resource, url) {
 				var img = document.createElement('img');
 				document.body.appendChild(img);
 				img.src = url;
