@@ -2,11 +2,12 @@
 
 > The featured-packed native loader of JS, CSS, and any type of files for mobile & desktop browsers.
 
-- Loads JS files.
-- Loads CSS files.
-- Loads / preloads binary files.
-- With optional callbacks.
-- Series / One-by-one loading.
+- You can load resources from local directory, or from CDN's
+- Supports series (one-by-one) loading of files 
+- Supports parallel (regardless of order) loading of files
+- Cross Origin is automatically detected on resource loading
+- Supports callback on loading success, through "onLoad" property
+- Supports callback on loading error, through "onError" property
 
 ---
 
@@ -30,12 +31,6 @@ $ npm install ladderized@latest --save
 
 ## Usage
 
-- You can load resources from local directory, or from CDN's
-- Supports series (one-by-one) loading of files 
-- Supports parallel (regardless of order) loading of files
-- Cross Origin is automatically detected on resource loading
-- Supports callback on loading success, through "onLoad" property
-- Supports callback on loading error, through "onError" property
 - The **"/dist"** folder contains the compiled & minified js files
 - The **"/demo"** folder contains example usage
 
