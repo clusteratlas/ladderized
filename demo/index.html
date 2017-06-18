@@ -43,6 +43,7 @@
 	// ERROR HANDLING
 	// AND NANOBAR
 	
+	/*
 	Ladderized
 		.showNanoBar()
 		.js({
@@ -107,7 +108,59 @@
 			console.log('resources:', resources);
 			console.log('all files loaded!');
 		});
-		
+	*/
+	
+	Ladderized
+		.css({
+			link: 'https://unpkg.com/materialize-css@0.98.2/dist/css/materialize.min.css'
+		})
+		.load(function(){
+			Ladderized
+				.clearQueue()
+				.showNanoBar()
+		.css({
+			link: 'https://unpkg.com/materialize-css@0.98.2/dist/css/materialize.min.css'
+		})
+		.css({
+			link: 'https://unpkg.com/materialize-css@0.98.2/dist/css/materialize.min.css'
+		})
+		.css({
+			link: 'https://unpkg.com/materialize-css@0.98.2/dist/css/materialize.min.css'
+		})
+		.css({
+			link: 'https://unpkg.com/materialize-css@0.98.2/dist/css/materialize.min.css'
+		})
+				.js({
+					link: 'https://unpkg.com/jquery@3.2.1/dist/jquery.min.js'	
+				})
+				.js({
+					link: 'https://unpkg.com/materialize-css@0.98.2/dist/js/materialize.min.js'
+				})
+				.load(function(){
+					console.log('All files loaded!');
+					console.log(window);
+				});
+		});
+	/*
+	Ladderized
+		.css({
+			link: 'https://unpkg.com/materialize-css@0.98.2/dist/css/materialize.min.css'
+		})
+	.load(function(){
+		Ladderized
+			.clearQueue()
+			.showNanoBar()
+			.js({
+				link: 'https://unpkg.com/jquery@3.2.1/dist/jquery.min.js'	
+			})
+			.js({
+				link: 'https://unpkg.com/materialize-css@0.98.2/dist/js/materialize.min.js'
+			})
+			.load(function(){
+				console.log('All files loaded!');
+				console.log(window);
+			});
+	});*/
 </script>
 </body>
 </html>

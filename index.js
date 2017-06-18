@@ -1,18 +1,13 @@
 var ladderized = function () {
-		
-	var options = {
-		classname: 'ladderized-nanobar',
-		id: 'ladderized-nanobar',
-		target: document.body
-	};
-	var nanobar = new Nanobar(options);
-	var nanoPulses = 0;
-	var nanoValue = 10;
 	
-	this.showNanoBar = function () {
-		nanoValue = 10;
-		nanobar.go(nanoValue);
-		return this;
+	this.createNanoBar = function () {
+		var options = {
+			classname: 'ladderized-nanobar',
+			id: 'ladderized-nanobar',
+			target: document.body
+		};
+		var nanobar = new Nanobar(options);
+		return nanobar;
 	}
 	
 	var queue = [];
@@ -20,13 +15,10 @@ var ladderized = function () {
 	
 	this.clearQueue = function () {
 		queue = [];
-		nanoPulses = 0;
-		nanoValue = 10;
 		return this;
 	}
 	
 	this.parallel = function (entries) {
-		nanoPulses++;
 		// the typecheck IS NOW SET HERE.
 		// this is now the new formet:
 		// entry: {name, link, callback} for JS, CSS & RESOURCE
@@ -42,7 +34,6 @@ var ladderized = function () {
 	}
 	
 	this.js = function (entry) {
-		nanoPulses++;
 		if (typeof entry !== 'object') {
 			console.log('error', 'expecting OBJECT on JS');
 		}
@@ -57,7 +48,6 @@ var ladderized = function () {
 	}
 	
 	this.css = function (entry) {
-		nanoPulses++;
 		if (typeof entry !== 'object') {
 			console.log('error', 'expecting OBJECT on CSS');
 		}
@@ -72,7 +62,6 @@ var ladderized = function () {
 	}
 	
 	this.resource = function (entry) {
-		nanoPulses++;
 		if (typeof entry !== 'object') {
 			console.log('error', 'expecting OBJECT on RESOURCE');
 		}
@@ -193,13 +182,14 @@ var ladderized = function () {
 		
 	this.load = function (callback) {
 		onceDocumentIsReady(function() {
+			// var originalQueueLength = queue.length;
+			// var nanobarValue = 0;
 			function recurseQueue() {
-				if (typeof nanobar !== 'undefined') {
-					console.log(queue.length);
-					console.log(queue[0]);
-					nanoValue += (75/nanoPulses);
-					nanobar.go(nanoValue);
-				}
+				// console.log('@', queue.length, queue[0]);
+				// console.log('add', 100 / originalQueueLength);
+				// nanobarValue += 100 / originalQueueLength;
+				// nanobar.go(nanobarValue);
+				// console.log('now', nanobarValue);
 				if (queue.length >= 1) {
 					shifted = queue.shift();
 					switch (shifted.type) {
@@ -341,9 +331,6 @@ var ladderized = function () {
 				} else {
 					if (typeof callback === 'function') {
 						callback(resources);
-					}
-					if (typeof nanobar !== 'undefined') {
-						nanobar.go(100);
 					}
 				}
 			}
