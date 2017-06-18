@@ -50,7 +50,6 @@ node index.js
 ```
 
 **Basics, Series Loading**
-
 ```
 <script src="https://unpkg.com/ladderized/dist/ladderized.min.js"></script>
 <script>
@@ -83,7 +82,6 @@ node index.js
 ```
 
 **Parallel Loading, Error Handling & Nanobar**
-
 ```
 <script src="https://unpkg.com/ladderized/dist/ladderized.min.js"></script>
 <script>
@@ -152,6 +150,28 @@ node index.js
 			console.log('all files loaded!');
 		});
 </script>
+```
+
+**Sample usage**
+```
+Ladderized
+	.css({
+		link: 'https://unpkg.com/materialize-css/dist/css/materialize.min.css'
+	})
+	.load(function(){
+		Ladderized
+			.clearQueue()
+			.showNanoBar()
+			.js({
+				link: 'https://unpkg.com/jquery/dist/jquery.min.js'	
+			})
+			.js({
+				link: 'https://unpkg.com/materialize-css/dist/js/materialize.min.js'
+			})
+			.load(function(){
+				console.log('All files loaded!');
+			});
+	});
 ```
 
 ## Other Notes
