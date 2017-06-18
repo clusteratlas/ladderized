@@ -1,17 +1,31 @@
 var ladderized = function () {
 	
-	this.createNanoBar = function () {
+	this.createNanoBar = function (stepCount) {
+		if (typeof stepCount !== 'number') {
+			console.log('error', 'createNanoBar stepCount must be a number!');
+		}
 		var options = {
 			classname: 'ladderized-nanobar',
 			id: 'ladderized-nanobar',
 			target: document.body
 		};
 		var nanobar = new Nanobar(options);
-		return nanobar;
+		this.currentValue = 0;
+		this.stepCount = stepCount;
+		this.nanobar = nanobar;
+		return this;
 	}
 	
 	var queue = [];
 	this.queue = queue;
+	
+	this.setStepCount = function (stepCount) {
+		if (typeof stepCount !== 'number') {
+			console.log('error', 'createNanoBar stepCount must be a number!');
+		}
+		this.stepCount = stepCount;
+		return this;
+	}
 	
 	this.clearQueue = function () {
 		queue = [];
@@ -181,10 +195,22 @@ var ladderized = function () {
 	this.loaders = loaders;
 		
 	this.load = function (callback) {
+		var self = this;
 		onceDocumentIsReady(function() {
 			// var originalQueueLength = queue.length;
 			// var nanobarValue = 0;
-			function recurseQueue() {
+			function nanobarStep () {
+				if (typeof self.nanobar !== 'undefined') {
+					if (self.currentValue >= (100 - (100 / self.stepCount))) {
+						self.currentValue = 100;
+					} else {
+						self.currentValue += 100 / self.stepCount;
+					}
+					self.nanobar.go(self.currentValue);
+					// console.log(self.currentValue);
+				}
+			}
+			function recurseQueue () {
 				// console.log('@', queue.length, queue[0]);
 				// console.log('add', 100 / originalQueueLength);
 				// nanobarValue += 100 / originalQueueLength;
@@ -201,12 +227,14 @@ var ladderized = function () {
 									if (Object.prototype.hasOwnProperty.call(entry, 'onLoad') === true) {
 										entry.onLoad();
 									}
+									nanobarStep();
 									recurseQueue();
 								},
 								function () {
 									if (Object.prototype.hasOwnProperty.call(entry, 'onError') === true) {
 										entry.onError();
 									}
+									nanobarStep();
 									recurseQueue();
 								}
 							);
@@ -219,12 +247,14 @@ var ladderized = function () {
 									if (Object.prototype.hasOwnProperty.call(entry, 'onLoad') === true) {
 										entry.onLoad();
 									}
+									nanobarStep();
 									recurseQueue();
 								},
 								function () {
 									if (Object.prototype.hasOwnProperty.call(entry, 'onError') === true) {
 										entry.onError();
 									}
+									nanobarStep();
 									recurseQueue();
 								}
 							);
@@ -238,12 +268,14 @@ var ladderized = function () {
 									if (Object.prototype.hasOwnProperty.call(entry, 'onLoad') === true) {
 										entry.onLoad(resource, objectURL);
 									}
+									nanobarStep();
 									recurseQueue();
 								},
 								function () {
 									if (Object.prototype.hasOwnProperty.call(entry, 'onError') === true) {
 										entry.onError();
 									}
+									nanobarStep();
 									recurseQueue();
 								}
 							);
