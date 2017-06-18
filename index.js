@@ -356,6 +356,7 @@ var ladderized = function () {
 			}
 			recurseQueue();
 		});
+		return this;
 	}
 	
 }
