@@ -26,9 +26,7 @@ var ladderized = function () {
 	}
 	
 	this.parallel = function (entries) {
-		if (typeof nanobar !== 'undefined') {
-			nanoPulses++;
-		}
+		nanoPulses++;
 		// the typecheck IS NOW SET HERE.
 		// this is now the new formet:
 		// entry: {name, link, callback} for JS, CSS & RESOURCE
@@ -44,9 +42,7 @@ var ladderized = function () {
 	}
 	
 	this.js = function (entry) {
-		if (typeof nanobar !== 'undefined') {
-			nanoPulses++;
-		}
+		nanoPulses++;
 		if (typeof entry !== 'object') {
 			console.log('error', 'expecting OBJECT on JS');
 		}
@@ -61,9 +57,7 @@ var ladderized = function () {
 	}
 	
 	this.css = function (entry) {
-		if (typeof nanobar !== 'undefined') {
-			nanoPulses++;
-		}
+		nanoPulses++;
 		if (typeof entry !== 'object') {
 			console.log('error', 'expecting OBJECT on CSS');
 		}
@@ -78,9 +72,7 @@ var ladderized = function () {
 	}
 	
 	this.resource = function (entry) {
-		if (typeof nanobar !== 'undefined') {
-			nanoPulses++;
-		}
+		nanoPulses++;
 		if (typeof entry !== 'object') {
 			console.log('error', 'expecting OBJECT on RESOURCE');
 		}
