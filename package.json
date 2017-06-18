@@ -1,6 +1,6 @@
 {
   "name": "ladderized",
-  "version": "3.0.0",
+  "version": "4.0.1",
   "description": "A featured-packed loader w/o the need for jQuery; for loading js files & css files, etc.",
   "main": "index.js",
   "scripts": {
