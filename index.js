@@ -1,16 +1,15 @@
 var ladderized = function () {
 		
-	var nanobar;
+	var options = {
+		classname: 'ladderized-nanobar',
+		id: 'ladderized-nanobar',
+		target: document.body
+	};
+	var nanobar = new Nanobar(options);
 	var nanoPulses = 0;
 	var nanoValue = 10;
 	
 	this.showNanoBar = function () {
-		var options = {
-			classname: 'ladderized-nanobar',
-			id: 'ladderized-nanobar',
-			target: document.body
-		};
-		nanobar = new Nanobar(options);
 		nanoValue = 10;
 		nanobar.go(nanoValue);
 		return this;
