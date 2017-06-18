@@ -195,6 +195,8 @@ var ladderized = function () {
 		onceDocumentIsReady(function() {
 			function recurseQueue() {
 				if (typeof nanobar !== 'undefined') {
+					console.log(queue.length);
+					console.log(queue[0]);
 					nanoValue += (75/nanoPulses);
 					nanobar.go(nanoValue);
 				}
